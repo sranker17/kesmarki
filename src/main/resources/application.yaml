@@ -1,5 +1,7 @@
 spring:
   datasource:
+    # in normal circumstances these would be collected from an environment specific secret
+    # change these to ms sql for testing
     url: jdbc:postgresql://localhost:5432/KesmarkiDB
     username: postgres
     password: password
