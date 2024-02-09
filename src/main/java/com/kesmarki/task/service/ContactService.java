@@ -32,9 +32,7 @@ public class ContactService {
 
     public Contact addContact(Contact contact) {
         validationService.validateContact(contact);
-        Contact c = new Contact(ContactType.EMAIL, "adw@ad.com");
-        c.setCreateDate(OffsetDateTime.now());
-        return contactRepository.save(c);
+        return contactRepository.save(contact);
     }
 
     public Contact updateContact(Contact contact) {
