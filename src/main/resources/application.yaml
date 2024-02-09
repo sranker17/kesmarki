@@ -7,11 +7,12 @@ spring:
     password: password
   jpa:
     show-sql: true
+    hibernate:
+      use-new-id-generator-mappings: false
   liquibase:
     enabled: true
     drop-first: true
     change-log: classpath:db/changelog/db.changelog-master.xml
 application:
   validation:
-    validId: 0
     stringLength: 255

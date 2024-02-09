@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
@@ -27,7 +28,7 @@ public class ContactController {
     }
 
     @GetMapping(value = "/contact/{id}")
-    public ResponseEntity<Contact> getContact(@PathVariable("id") Long id) {
+    public ResponseEntity<Contact> getContact(@PathVariable("id") UUID id) {
         log.info("getContact called");
         return status(OK).body(contactService.getContact(id));
     }

@@ -5,10 +5,19 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
+    <property name="uuid_type" value="uuid" dbms="postgresql"/>
+    <property name="uuid_type" value="uniqueidentifier" dbms="mssql"/>
+    <property name="uuid_type" value="RAW(16)" dbms="oracle"/>
+
+    <property name="uuid_function" value="gen_random_uuid()" dbms="postgresql"/>
+    <property name="uuid_function" value="NEWID()" dbms="mssql"/>
+    <property name="uuid_function" value="sys_guid()" dbms="oracle"/>
+
     <changeSet id="create-tables" author="Daniel Vrabel">
         <createTable tableName="person">
             <column name="id"
-                    type="java.lang.Long"
+                    type="${uuid_type}"
+                    defaultValueComputed="${uuid_function}"
                     remarks="id">
                 <constraints primaryKey="true" primaryKeyName="pk_person"/>
             </column>
@@ -17,11 +26,13 @@
                     remarks="Name">
             </column>
             <column name="temporary_address_id"
-                    type="java.lang.Long"
+                    type="${uuid_type}"
+                    defaultValueComputed="${uuid_function}"
                     remarks="Temporary address id">
             </column>
             <column name="permanent_address_id"
-                    type="java.lang.Long"
+                    type="${uuid_type}"
+                    defaultValueComputed="${uuid_function}"
                     remarks="Permanent address id">
             </column>
             <column name="create_date"
@@ -32,7 +43,8 @@
 
         <createTable tableName="address">
             <column name="id"
-                    type="java.lang.Long"
+                    type="${uuid_type}"
+                    defaultValueComputed="${uuid_function}"
                     remarks="id">
                 <constraints primaryKey="true" primaryKeyName="pk_address"/>
             </column>
@@ -60,7 +72,8 @@
 
         <createTable tableName="contact">
             <column name="id"
-                    type="java.lang.Long"
+                    type="${uuid_type}"
+                    defaultValueComputed="${uuid_function}"
                     remarks="id">
                 <constraints primaryKey="true" primaryKeyName="pk_contact"/>
             </column>
@@ -73,7 +86,8 @@
                     remarks="Data">
             </column>
             <column name="address_id"
-                    type="java.lang.Long"
+                    type="${uuid_type}"
+                    defaultValueComputed="${uuid_function}"
                     remarks="Address id">
                 <constraints foreignKeyName="fk_contact_address_id" references="address(id)"/>
             </column>

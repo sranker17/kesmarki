@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Person getPerson(Long id) {
+    public Person getPerson(UUID id) {
         validationService.validateId(id);
         Optional<Person> person = personRepository.findById(id);
         if (person.isPresent()) return person.get();
@@ -33,6 +34,7 @@ public class PersonService {
     }
 
     public Person updatePerson(Person person) {
+        validationService.validateId(person.getId());
         validationService.validatePerson(person);
         return personRepository.save(person);
     }

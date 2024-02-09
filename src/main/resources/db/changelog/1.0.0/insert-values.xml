@@ -5,12 +5,37 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-    <changeSet id="insert-values" author="Daniel Vrabel">
-        <sqlFile path="insert-values.sql"
-                 endDelimiter=";"
-                 relativeToChangelogFile="true"
-                 splitStatements="true"
-                 stripComments="true"/>
+    <changeSet id="insert-tables" author="Daniel Vrabel">
+        <loadData tableName="person"
+                  separator=";"
+                  file="db/changelog/1.0.0/csv/person.csv">
+            <column name="id" header="ID"/>
+            <column name="name" header="NAME"/>
+            <column name="permanent_address_id" header="PERMANENT_ADDRESS_ID"/>
+            <column name="temporary_address_id" header="TEMPORARY_ADDRESS_ID"/>
+            <column name="create_date" header="CREATE_DATE"/>
+        </loadData>
+
+        <loadData tableName="address"
+                  separator=";"
+                  file="db/changelog/1.0.0/csv/address.csv">
+            <column name="id" header="ID"/>
+            <column name="country" header="COUNTRY"/>
+            <column name="city" header="CITY"/>
+            <column name="zip" header="ZIP"/>
+            <column name="street" header="STREET"/>
+            <column name="create_date" header="CREATE_DATE"/>
+        </loadData>
+
+        <loadData tableName="contact"
+                  separator=";"
+                  file="db/changelog/1.0.0/csv/contact.csv">
+            <column name="id" header="ID"/>
+            <column name="contact_type" header="CONTACT_TYPE"/>
+            <column name="data" header="DATA"/>
+            <column name="address_id" header="ADDRESS_ID"/>
+            <column name="create_date" header="CREATE_DATE"/>
+        </loadData>
     </changeSet>
 
 </databaseChangeLog>

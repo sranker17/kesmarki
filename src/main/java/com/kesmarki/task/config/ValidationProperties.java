@@ -10,6 +10,5 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 public class ValidationProperties {
-    private Long validId;
     private Long stringLength;
 }

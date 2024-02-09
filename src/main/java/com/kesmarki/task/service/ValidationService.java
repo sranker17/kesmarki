@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 @Service
@@ -21,14 +22,12 @@ public class ValidationService {
     private final ValidationProperties validationProperties;
 
     public void validatePerson(Person person) {
-        validateId(person.getId());
         validateNotNullString(person.getName());
         if (ObjectUtils.isNotEmpty(person.getPermanentAddress())) validateAddress(person.getPermanentAddress());
         if (ObjectUtils.isNotEmpty(person.getTemporaryAddress())) validateAddress(person.getTemporaryAddress());
     }
 
     public void validateAddress(Address address) {
-        validateId(address.getId());
         validateNotNullString(address.getCountry());
         validateNotNullString(address.getCity());
         validateNotNullString(address.getZip());
@@ -38,13 +37,11 @@ public class ValidationService {
 
     public void validateContact(Contact contact) {
         if (ObjectUtils.isEmpty(contact)) throw new ValidationException("Contact can't be null");
-        validateId(contact.getId());
         validateContactTypeWithData(contact.getContactType(), contact.getData());
     }
 
-    public void validateId(Long id) {
-        if (id == null || id < validationProperties.getValidId())
-            throw new ValidationException("ID cannot be null or less than 0");
+    public void validateId(UUID id) {
+        if (id == null) throw new ValidationException("ID cannot be null");
     }
 
     private void validateNotNullString(String s) {
