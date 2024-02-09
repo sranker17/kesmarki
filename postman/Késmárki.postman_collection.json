@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "7afe5bb5-46d2-4d09-bf1b-42e0eb3f606b",
+		"name": "Késmárki",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19418650"
+	},
+	"item": [
+		{
+			"name": "Person",
+			"item": [
+				{
+					"name": "getPeople",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/people",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPerson",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/person/{{personId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"{{personId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPerson",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jeff\",\r\n    \"temporaryAddress\": null,\r\n    \"permanentAddress\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/person",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePerson",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"3175f63a-1255-48cf-a205-0ef643d6a3c6\",\r\n    \"createDate\": \"2022-04-11T00:00:00Z\",\r\n    \"name\": \"Jeff\",\r\n    \"temporaryAddress\": null,\r\n    \"permanentAddress\": {\r\n        \"id\": \"3175f63a-1255-48cf-a205-0ef643d6a3c6\",\r\n        \"createDate\": \"2022-04-11T00:00:00Z\",\r\n        \"country\": \"Hungary\",\r\n        \"city\": \"Budapest\",\r\n        \"zip\": \"1111\",\r\n        \"street\": \"Test street\",\r\n        \"contacts\": [\r\n            {\r\n                \"id\": \"3175f63a-1255-48cf-a205-0ef643d6a3c6\",\r\n                \"createDate\": \"2022-04-11T00:00:00Z\",\r\n                \"contactType\": \"MOBILE_PHONE\",\r\n                \"data\": \"0630300000\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/person",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "getAddresses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/addresses",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAddress",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/address/{{addressId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address",
+								"{{addressId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addAddress",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"3175f63a-1255-48cf-a205-0ef643d6a3c1\",\r\n    \"country\": \"Hungary\",\r\n    \"city\": \"Budapest\",\r\n    \"zip\": \"1111\",\r\n    \"street\": \"Test street\",\r\n    \"contacts\": [\r\n        {\r\n            \"id\": \"3175f63a-1255-48cf-a205-0ef643d6a3c6\",\r\n            \"createDate\": \"2022-04-11T00:00:00Z\",\r\n            \"contactType\": \"MOBILE_PHONE\",\r\n            \"data\": \"0630300000\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/address",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAddress",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"952115a3-ead8-44fa-b2e1-840463d2ba59\",\r\n    \"createDate\": \"2022-04-11T00:00:00Z\",\r\n    \"country\": \"Hungary\",\r\n    \"city\": \"Budapest\",\r\n    \"zip\": \"1111\",\r\n    \"street\": \"Test street\",\r\n    \"contacts\": [\r\n        {\r\n            \"id\": \"3175f63a-1255-48cf-a205-0ef643d6a3c6\",\r\n            \"createDate\": \"2022-04-11T00:00:00Z\",\r\n            \"contactType\": \"MOBILE_PHONE\",\r\n            \"data\": \"0630300000\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/address",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact",
+			"item": [
+				{
+					"name": "getContacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contacts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getContact",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contact/{{contactId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contact",
+								"{{contactId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addContact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contactType\": \"MOBILE_PHONE\",\r\n    \"data\": \"0630300000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/contact",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateContact",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": \"5d2b9bb1-7277-4036-93c9-640796e43912\",\r\n        \"createDate\": \"2022-04-11T00:00:00Z\",\r\n        \"contactType\": \"EMAIL\",\r\n        \"data\": \"ana.test@test.com\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/contact",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "personId",
+			"value": ""
+		},
+		{
+			"key": "addressId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "contactId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
