@@ -11,3 +11,7 @@ spring:
     enabled: true
     drop-first: true
     change-log: classpath:db/changelog/db.changelog-master.xml
+application:
+  validation:
+    validId: 0
+    stringLength: 255

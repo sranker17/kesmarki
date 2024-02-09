@@ -14,22 +14,26 @@ import java.util.Optional;
 public class AddressService {
 
     private final AddressRepository addressRepository;
+    private final ValidationService validationService;
 
     public List<Address> getAddresses() {
         return addressRepository.findAll();
     }
 
     public Address getAddress(Long id) {
+        validationService.validateId(id);
         Optional<Address> address = addressRepository.findById(id);
         if (address.isPresent()) return address.get();
         else throw new EntityNotFoundException("Did not found Address entity with id: " + id);
     }
 
     public Address addAddress(Address address) {
+        validationService.validateAddress(address);
         return addressRepository.save(address);
     }
 
     public Address updateAddress(Address address) {
+        validationService.validateAddress(address);
         return addressRepository.save(address);
     }
 }
