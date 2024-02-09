@@ -1,5 +1,7 @@
-package com.kesmarki.task.exception;
+package com.kesmarki.task.controller.advice;
 
+import com.kesmarki.task.exception.ErrorMessage;
+import com.kesmarki.task.exception.ValidationException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.BadRequestException;
