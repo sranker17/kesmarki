@@ -29,12 +29,13 @@ public class PersonService {
     }
 
     public Person addPerson(Person person) {
+        person.setId(null);
         validationService.validatePerson(person);
         return personRepository.save(person);
     }
 
     public Person updatePerson(Person person) {
-        validationService.validateId(person.getId());
+        getPerson(person.getId());
         validationService.validatePerson(person);
         return personRepository.save(person);
     }

@@ -29,12 +29,13 @@ public class AddressService {
     }
 
     public Address addAddress(Address address) {
+        address.setId(null);
         validationService.validateAddress(address);
         return addressRepository.save(address);
     }
 
     public Address updateAddress(Address address) {
-        validationService.validateId(address.getId());
+        getAddress(address.getId());
         validationService.validateAddress(address);
         return addressRepository.save(address);
     }

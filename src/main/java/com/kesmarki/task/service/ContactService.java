@@ -1,13 +1,11 @@
 package com.kesmarki.task.service;
 
 import com.kesmarki.task.entity.Contact;
-import com.kesmarki.task.entity.ContactType;
 import com.kesmarki.task.repository.ContactRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -31,12 +29,13 @@ public class ContactService {
     }
 
     public Contact addContact(Contact contact) {
+        contact.setId(null);
         validationService.validateContact(contact);
         return contactRepository.save(contact);
     }
 
     public Contact updateContact(Contact contact) {
-        validationService.validateId(contact.getId());
+        getContact(contact.getId());
         validationService.validateContact(contact);
         return contactRepository.save(contact);
     }
