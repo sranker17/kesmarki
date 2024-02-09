@@ -36,7 +36,7 @@ public class Address extends BaseEntity {
     @Column(name = "STREET", nullable = false)
     private String street;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
     @JoinColumn(name = "ADDRESS_ID", nullable = false)
     private Set<Contact> contacts = new HashSet<>();
 }
